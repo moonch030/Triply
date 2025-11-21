@@ -1,0 +1,85 @@
+import type { ComponentsDemoColDefsType } from "@/types/componentsDemo.type";
+import type { ColDef } from "ag-grid-community";
+
+export const demoRowData: ComponentsDemoColDefsType[] = [
+  {
+    make: "Tesla",
+    model: "Model Y",
+    price: 64950,
+    year: 2022,
+    color: "Red",
+    mileage: 5000,
+    owner: "Alice",
+  },
+  {
+    make: "Ford",
+    model: "F-Series",
+    price: 33850,
+    year: 2020,
+    color: "Blue",
+    mileage: 12000,
+    owner: "Bob",
+  },
+  {
+    make: "Toyota",
+    model: "Corolla",
+    price: 29600,
+    year: 2021,
+    color: "White",
+    mileage: 8000,
+    owner: "Charlie",
+  },
+  {
+    make: "Honda",
+    model: "Civic",
+    price: 28000,
+    year: 2019,
+    color: "Black",
+    mileage: 15000,
+    owner: "David",
+  },
+  {
+    make: "BMW",
+    model: "iX",
+    price: 85000,
+    year: 2023,
+    color: "Silver",
+    mileage: 2000,
+    owner: "Eve",
+  },
+];
+
+export const demoColDefs: ColDef<ComponentsDemoColDefsType>[] = [
+  { headerName: "", field: "drag", rowDrag: true, width: 40 },
+  { headerName: "Make", field: "make", editable: true },
+  { headerName: "Model", field: "model", editable: true },
+  { headerName: "Price", field: "price", editable: true },
+  { headerName: "Year", field: "year", editable: true },
+  { headerName: "Color", field: "color", editable: true },
+  { headerName: "Mileage", field: "mileage", editable: true },
+  { headerName: "Owner", field: "owner", editable: true },
+];
+
+export const inputTypes = [
+  "button",
+  "checkbox",
+  "color",
+  "date",
+  "datetime-local",
+  "email",
+  "file",
+  "hidden",
+  "month",
+  "number",
+  "password",
+  "radio",
+  "range",
+  "reset",
+  "search",
+  "submit",
+  "tel",
+  "text",
+  "time",
+  "url",
+  "week",
+] as const;
