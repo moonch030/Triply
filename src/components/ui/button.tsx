@@ -9,29 +9,28 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-blue-500 text-white hover:bg-blue-500/90",
+        destructive: "bg-red-500 text-white hover:bg-red-500/90 focus-visible:ring-red-500/20",
+        outline: "border border-blue-500 bg-white text-blue-500 hover:bg-blue-50",
+        secondary: "bg-blue-100 text-blue-700 hover:bg-blue-200",
+        ghost: "bg-transparent text-blue-500 hover:bg-blue-50",
+        link: "text-blue-500 underline-offset-4 hover:underline",
+        cancel: "bg-gray-400 text-white hover:bg-gray-400/90",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10",
+        xs: "h-7 px-2.5 py-1.5 text-[0.75rem] has-[>svg]:px-2",   // 12px
+        s: "h-8 px-3 py-2 text-[0.875rem] has-[>svg]:px-2.5",     // 14px
+        md: "h-9 px-4 py-2 text-[1rem] has-[>svg]:px-3",           // 16px
+        lg: "h-10 px-6 py-3 text-[1.125rem] has-[>svg]:px-4",      // 18px
+        xl: "h-12 px-8 py-4 text-[1.25rem] has-[>svg]:px-6",       // 20px
+        icon: "size-9 text-[1rem]",                                 // 아이콘 버튼 기본 폰트 16px
+        "icon-sm": "size-8 text-[0.875rem]",                        // 14px
+        "icon-lg": "size-10 text-[1.125rem]",                       // 18px
       },
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      size: "md",  // 이제 기본 사이즈는 m으로 설정
     },
   }
 )
