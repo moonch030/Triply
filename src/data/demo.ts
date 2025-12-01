@@ -50,7 +50,12 @@ export const demoRowData: ComponentsDemoColDefsType[] = [
 ];
 
 export const demoColDefs: ColDef<ComponentsDemoColDefsType>[] = [
-  { headerName: "", field: "drag", rowDrag: true, width: 40 },
+  {
+    headerName: "",
+    field: "drag",
+    rowDrag: true,
+    width: 40,
+  },
   { headerName: "Make", field: "make", editable: true },
   { headerName: "Model", field: "model", editable: true },
   { headerName: "Price", field: "price", editable: true },

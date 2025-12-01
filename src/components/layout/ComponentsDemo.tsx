@@ -8,7 +8,7 @@ import type { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
 import { useMemo, useState } from "react";
 
 function componentsDemo() {
-  const [gridApi, setGridApi] = useState<GridApi | null>(null);
+  const [_gridApi, setGridApi] = useState<GridApi | null>(null);
 
   const [rowData, setRowData] =
     useState<ComponentsDemoColDefsType[]>(demoRowData);
@@ -26,7 +26,8 @@ function componentsDemo() {
     <main className="bg-[#F7F7F8] w-full min-h-screen p-10">
       <div className="flex flex-col gap-10 m-auto max-w-[1200px]">
         {/** Button Section */}
-        <section className="bg-white p-5 border border-gray-300 rounded">
+        {/* <section className="bg-white p-5 border border-gray-300 rounded"> */}
+        <section className="p-5">
           <div className="flex flex-col gap-5">
             <p className="text-3xl font-semibold">Button</p>
             <ul className="list-disc border rounded border-pink-200 bg-pink-100 p-1 pl-10 text-sm text-pink-700">
@@ -39,6 +40,9 @@ function componentsDemo() {
 
             {/** Button Sizes */}
             <div className="flex items-end gap-3 flex-wrap">
+              <Button variant="default" size="icon">
+                icon
+              </Button>
               <Button variant="default" size="xs">
                 xs
               </Button>
@@ -57,14 +61,30 @@ function componentsDemo() {
             </div>
 
             {/** Button Variants */}
-            <div className="flex items-end gap-3 flex-wrap">
-              <Button variant="default">default</Button>
-              <Button variant="cancel">cancel</Button>
-              <Button variant="destructive">destructive</Button>
-              <Button variant="outline">outline</Button>
-              <Button variant="secondary">secondary</Button>
-              <Button variant="ghost">ghost</Button>
-              <Button variant="link">link</Button>
+            {/* <div className="flex items-end gap-3 flex-wrap"> */}
+            <div className="flex flex-col items-start gap-3 flex-wrap">
+              <div className="flex gap-2">
+                <Button variant="default">default</Button>
+                <Button variant="destructive">destructive</Button>
+                <Button variant="secondary">secondary</Button>
+                <Button variant="cancel">cancel</Button>
+                <Button variant="outline">outline</Button>
+                <Button variant="ghost">ghost</Button>
+                <Button variant="link">link</Button>
+              </div>
+
+              <div className="flex gap-2">
+                <Button variant="a">확인</Button>
+                <Button variant="b">다음</Button>
+                <Button variant="c">다음</Button>
+              </div>
+
+              <div className="flex gap-2">
+                <Button variant="d">확인</Button>
+                <Button variant="e">확인</Button>
+                <Button variant="f">다음</Button>
+                <Button variant="g">다음</Button>
+              </div>
             </div>
           </div>
         </section>

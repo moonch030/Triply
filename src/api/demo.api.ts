@@ -1,1 +1,0 @@
-import type { ApiResponse } from "@/types/response.type";
