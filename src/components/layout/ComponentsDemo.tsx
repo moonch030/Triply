@@ -4,6 +4,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { demoRowData, demoColDefs, inputTypes } from "@/data/demo";
 import type { ComponentsDemoColDefsType } from "@/types/componentsDemo.type";
+import { useNavigate } from "@tanstack/react-router";
 import type { ColDef, GridApi, GridReadyEvent } from "ag-grid-community";
 import { useMemo, useState } from "react";
 
@@ -22,8 +23,19 @@ function componentsDemo() {
     setGridApi(params.api);
   };
 
+  const navigate = useNavigate();
+
+
   return (
     <main className="bg-[#F7F7F8] w-full min-h-screen p-10">
+
+      <Button
+        variant="default"
+        size="md"
+        onClick={() => navigate({ to: "/auth/login" })}
+      >
+        로그인
+      </Button>
       <div className="flex flex-col gap-10 m-auto max-w-[1200px]">
         {/** Button Section */}
         {/* <section className="bg-white p-5 border border-gray-300 rounded"> */}
