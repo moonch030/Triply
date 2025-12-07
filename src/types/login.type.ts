@@ -1,5 +1,6 @@
 export type SocialLoginReqType = {
   token: string;
+  state?: string;
   provider: string;
 };
 
@@ -9,7 +10,6 @@ export type SocialLoginResType = {
     expiredAt: string
   }
 }
-
 
 export type getKakaoTokenReqType = {
   grant_type: string;
@@ -27,4 +27,19 @@ export type KakaoTokenResType = {
   expires_in: number;
   scope?: string;
   refresh_token_expires_in: number;
+}
+
+export type getNaverTokenReqType = {
+  grant_type: string;
+  client_id: string;
+  client_secret: string;
+  code: string;
+  state: string;
+};
+
+export type NaverTokenResType = {
+  access_token: string;
+  refresh_token: string;
+  token_type: string; // "bearer"
+  expires_in: number;
 }
