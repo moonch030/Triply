@@ -1,7 +1,8 @@
 import {
   getKakaoTokenApi,
-//   getNaverTokenApi,
+  //   getNaverTokenApi,
   socialLoginApi,
+  getGoogleTokenApi,
 } from "@/api/login.api";
 
 /** 카카오 소셜 로그인 */
@@ -67,8 +68,8 @@ export const getNaverToken = async () => {
   const returnedState = params.get("state");
   if (!code) return;
 
-//   const VITE_NAVER_CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID;
-//   const VITE_NAVER_CLIENT_SECRET = import.meta.env.VITE_NAVER_CLIENT_SECRET;
+  //   const VITE_NAVER_CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID;
+  //   const VITE_NAVER_CLIENT_SECRET = import.meta.env.VITE_NAVER_CLIENT_SECRET;
 
   const originalState = sessionStorage.getItem("naver_state");
 
@@ -96,10 +97,47 @@ export const getNaverToken = async () => {
       state: returnedState,
       provider: "NAVER",
     });
-
   } catch (err) {
     console.error("네이버 토큰 요청 에러:", err);
   }
 };
 
 /** 구글 소셜 로그인 */
+export function getGoogleLoginUrl() {
+  const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+  const REDIRECT_URL = import.meta.env.VITE_SOCIAL_GOOGLE_REDIRECT_URL;
+
+  return `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URL}&response_type=code&scope=openid email profile`;
+}
+export function redirectToGoogleLogin() {
+  const url = getGoogleLoginUrl();
+  window.location.href = url;
+}
+
+export const getGoogleToken = async () => {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+
+  if (!code) return;
+
+  const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+  const CLIENT_SECRET = import.meta.env.VITE_GOOGLE_CLIENT_SECRET;
+  const REDIRECT_URL = import.meta.env.VITE_SOCIAL_GOOGLE_REDIRECT_URL;
+
+  try {
+    const response = await getGoogleTokenApi({
+      grant_type: "authorization_code",
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+      redirect_uri: REDIRECT_URL,
+      code: code,
+    });
+
+    await socialLoginApi({
+      token: response.access_token,
+      provider: "GOOGLE",
+    });
+  } catch (err) {
+    console.error("구글 토큰 요청 에러:", err);
+  }
+};

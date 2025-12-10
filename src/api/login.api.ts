@@ -3,8 +3,10 @@ import { errorResponse, succesResponse } from "@/lib/response";
 import type {
   getKakaoTokenReqType,
   getNaverTokenReqType,
+  getGoogleTokenReqType,
   KakaoTokenResType,
   NaverTokenResType,
+  GoogleTokenResType,
   SocialLoginReqType,
   SocialLoginResType,
 } from "@/types/login.type";
@@ -48,8 +50,6 @@ export async function getKakaoTokenApi(params: getKakaoTokenReqType) {
   }
 }
 
-
-
 export async function getNaverTokenApi(params: getNaverTokenReqType) {
   const body = new URLSearchParams();
   Object.entries(params).forEach(([key, value]) => {
@@ -72,5 +72,30 @@ export async function getNaverTokenApi(params: getNaverTokenReqType) {
   } catch (err) {
     console.error("네이버 토큰 요청 실패:", err);
     throw new Error("네이버 인증에 실패했습니다.");
+  }
+}
+export async function getGoogleTokenApi(params: getGoogleTokenReqType) {
+  const body = new URLSearchParams();
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      body.append(key, String(value));
+    }
+  });
+
+  try {
+    const response = await axios.post<GoogleTokenResType>(
+      "https://oauth2.googleapis.com/token",
+      body,
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    console.error("구글 토큰 요청 실패:", err);
+    throw new Error("구글 인증에 실패했습니다.");
   }
 }

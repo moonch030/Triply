@@ -1,4 +1,8 @@
-import { redirectToKakaoLogin, redirectToNaverLogin } from "@/data/socialLogin";
+import {
+  redirectToKakaoLogin,
+  redirectToNaverLogin,
+  redirectToGoogleLogin,
+} from "@/data/socialLogin";
 
 function SocialLogin() {
   return (
@@ -13,6 +17,12 @@ function SocialLogin() {
         src="/src/assets/images/naverLoginbtn.png"
         alt="네이버로그인버튼"
         onClick={redirectToNaverLogin}
+        className="w-60 h-10"
+      />
+      <img
+        src="/src/assets/images/googleLoginbtn.png"
+        alt="구글로그인버튼"
+        onClick={redirectToGoogleLogin}
         className="w-60 h-10"
       />
     </div>

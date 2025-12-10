@@ -6,10 +6,10 @@ export type SocialLoginReqType = {
 
 export type SocialLoginResType = {
   accessToken: {
-    value: string,
-    expiredAt: string
-  }
-}
+    value: string;
+    expiredAt: string;
+  };
+};
 
 export type getKakaoTokenReqType = {
   grant_type: string;
@@ -17,7 +17,7 @@ export type getKakaoTokenReqType = {
   redirect_uri: string;
   code: string;
   client_secret: string;
-}
+};
 
 export type KakaoTokenResType = {
   access_token: string;
@@ -27,7 +27,7 @@ export type KakaoTokenResType = {
   expires_in: number;
   scope?: string;
   refresh_token_expires_in: number;
-}
+};
 
 export type getNaverTokenReqType = {
   grant_type: string;
@@ -42,4 +42,20 @@ export type NaverTokenResType = {
   refresh_token: string;
   token_type: string; // "bearer"
   expires_in: number;
-}
+};
+
+export type getGoogleTokenReqType = {
+  grant_type: string;
+  client_id: string;
+  client_secret: string;
+  redirect_uri: string;
+  code: string;
+};
+
+export type GoogleTokenResType = {
+  access_token: string;
+  expires_in: number;
+  scope: string;
+  token_type: string;
+  id_token: string;
+};
