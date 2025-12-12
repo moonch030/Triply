@@ -25,10 +25,8 @@ function componentsDemo() {
 
   const navigate = useNavigate();
 
-
   return (
     <main className="bg-[#F7F7F8] w-full min-h-screen p-10">
-
       <Button
         variant="default"
         size="md"
