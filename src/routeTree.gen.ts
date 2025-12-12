@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthCallbackRouteImport } from './routes/auth/$callback'
+import { Route as _travelPlanRouteImport } from './routes/__travel/plan'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,33 +29,42 @@ const AuthCallbackRoute = AuthCallbackRouteImport.update({
   path: '/auth/$callback',
   getParentRoute: () => rootRouteImport,
 } as any)
+const _travelPlanRoute = _travelPlanRouteImport.update({
+  id: '/__travel/plan',
+  path: '/plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/plan': typeof _travelPlanRoute
   '/auth/$callback': typeof AuthCallbackRoute
   '/auth/login': typeof AuthLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/plan': typeof _travelPlanRoute
   '/auth/$callback': typeof AuthCallbackRoute
   '/auth/login': typeof AuthLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/__travel/plan': typeof _travelPlanRoute
   '/auth/$callback': typeof AuthCallbackRoute
   '/auth/login': typeof AuthLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth/$callback' | '/auth/login'
+  fullPaths: '/' | '/plan' | '/auth/$callback' | '/auth/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth/$callback' | '/auth/login'
-  id: '__root__' | '/' | '/auth/$callback' | '/auth/login'
+  to: '/' | '/plan' | '/auth/$callback' | '/auth/login'
+  id: '__root__' | '/' | '/__travel/plan' | '/auth/$callback' | '/auth/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  _travelPlanRoute: typeof _travelPlanRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
   AuthLoginRoute: typeof AuthLoginRoute
 }
@@ -82,11 +92,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/__travel/plan': {
+      id: '/__travel/plan'
+      path: '/plan'
+      fullPath: '/plan'
+      preLoaderRoute: typeof _travelPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  _travelPlanRoute: _travelPlanRoute,
   AuthCallbackRoute: AuthCallbackRoute,
   AuthLoginRoute: AuthLoginRoute,
 }
