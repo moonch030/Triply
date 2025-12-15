@@ -5,9 +5,18 @@
 @layer base {
   html {
     font-family: "Pretendard", sans-serif;
+    background-color: #f7f7f8;
   }
-}
 
-:root {
-  background-color: #f7f7f8;
+  h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #282e51;
+  }
+
+  h2 {
+    font-size: 22px;
+    font-weight: 500;
+    color: #7F8395;
+  }
 }

@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
@@ -15,7 +15,7 @@ const buttonVariants = cva(
         cancel: "bg-[#B4B6C1] text-white hover:bg-[#B4B6C1]/90",
         outline:
           "border border-[#0078EF] bg-white text-[#0078EF] hover:bg-blue-50",
-        secondary: "bg-[#DBEAFE] text-blue-700 hover:bg-[#DBEAFE]",
+        secondary: "bg-[#DBEAFE] text-[#0048B4] hover:bg-[#EFF6FF]",
         ghost: "bg-transparent text-[#0078EF] hover:bg-blue-50",
         link: "text-[#0078EF] underline-offset-4 hover:underline",
 
@@ -34,7 +34,7 @@ const buttonVariants = cva(
         s: "h-8 px-3 py-2 text-[0.875rem] has-[>svg]:px-2.5", // 14px
         md: "h-9 px-4 py-2 text-[1rem] has-[>svg]:px-3", // 16px
         lg: "h-10 px-6 py-3 text-[1.125rem] has-[>svg]:px-4", // 18px
-        xl: "h-12 px-8 py-4 text-[1.25rem] has-[>svg]:px-6", // 20px
+        xl: "h-12 px-8 py-8 text-[1.25rem] font-bold has-[>svg]:px-6", // 20px
         icon: "size-9 text-[1rem]", // 아이콘 버튼 기본 폰트 16px
         "icon-sm": "size-8 text-[0.875rem]", // 14px
         "icon-lg": "size-10 text-[1.125rem]", // 18px

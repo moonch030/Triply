@@ -47,7 +47,7 @@ export function SocialLoginButton({
       type="button"
       className={cn(
         "relative flex items-center justify-center",
-        "w-[400px] h-[44px] rounded-md",
+        "w-[600px] h-[50px] rounded-md",
         style.bg,
         style.text,
         "text-sm font-medium",

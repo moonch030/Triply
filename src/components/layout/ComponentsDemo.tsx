@@ -27,13 +27,23 @@ function componentsDemo() {
 
   return (
     <main className="bg-[#F7F7F8] w-full min-h-screen p-10">
-      <Button
-        variant="default"
-        size="md"
-        onClick={() => navigate({ to: "/auth/login" })}
-      >
-        로그인
-      </Button>
+      <div className="flex gap-3">
+        <Button
+          variant="default"
+          size="md"
+          onClick={() => navigate({ to: "/auth/login" })}
+        >
+          로그인
+        </Button>
+        <Button
+          variant="default"
+          size="md"
+          onClick={() => navigate({ to: "/plan" })}
+        >
+          지도
+        </Button>
+      </div>
+
       <div className="flex flex-col gap-10 m-auto max-w-[1200px]">
         {/** Button Section */}
         {/* <section className="bg-white p-5 border border-gray-300 rounded"> */}
