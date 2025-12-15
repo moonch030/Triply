@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthCallbackRouteImport } from './routes/auth/$callback'
+import { Route as protectedLayoutRouteImport } from './routes/(protected)/_layout'
 import { Route as protectedtravelPlanRouteImport } from './routes/(protected)/(travel)/plan'
 
 const IndexRoute = IndexRouteImport.update({
@@ -27,6 +28,10 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
 const AuthCallbackRoute = AuthCallbackRouteImport.update({
   id: '/auth/$callback',
   path: '/auth/$callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const protectedLayoutRoute = protectedLayoutRouteImport.update({
+  id: '/(protected)/_layout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const protectedtravelPlanRoute = protectedtravelPlanRouteImport.update({
@@ -50,6 +55,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/(protected)/_layout': typeof protectedLayoutRoute
   '/auth/$callback': typeof AuthCallbackRoute
   '/auth/login': typeof AuthLoginRoute
   '/(protected)/(travel)/plan': typeof protectedtravelPlanRoute
@@ -62,6 +68,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/(protected)/_layout'
     | '/auth/$callback'
     | '/auth/login'
     | '/(protected)/(travel)/plan'
@@ -69,6 +76,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  protectedLayoutRoute: typeof protectedLayoutRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
   AuthLoginRoute: typeof AuthLoginRoute
   protectedtravelPlanRoute: typeof protectedtravelPlanRoute
@@ -97,6 +105,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(protected)/_layout': {
+      id: '/(protected)/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof protectedLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/(protected)/(travel)/plan': {
       id: '/(protected)/(travel)/plan'
       path: '/plan'
@@ -109,6 +124,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  protectedLayoutRoute: protectedLayoutRoute,
   AuthCallbackRoute: AuthCallbackRoute,
   AuthLoginRoute: AuthLoginRoute,
   protectedtravelPlanRoute: protectedtravelPlanRoute,
