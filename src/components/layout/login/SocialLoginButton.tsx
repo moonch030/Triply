@@ -28,9 +28,9 @@ const PROVIDER_STYLE: Record<
 };
 
 const PROVIDER_LABEL: Record<Provider, string> = {
-  kakao: "카카오 로그인",
-  google: "Google 계정으로 로그인",
-  naver: "네이버 로그인",
+  kakao: "카카오로 시작하기",
+  google: "Google 계정으로 시작하기",
+  naver: "네이버로 시작하기",
 };
 
 export function SocialLoginButton({

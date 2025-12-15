@@ -1,5 +1,5 @@
 import CommonLayout from "../../common/CommonLayout";
-import ComponentsDemo from "../ComponentsDemo";
+// import ComponentsDemo from "../ComponentsDemo";
 import MainLayout from "./MainLayout";
 
 const Main = () => {
