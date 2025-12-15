@@ -1,4 +1,4 @@
-import SocialLogin from '@/components/layout/login/SocialLogin'
+import SocialLoginContainer from '@/components/layout/login/SocialLoginContainer'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/auth/login')({
@@ -6,6 +6,6 @@ export const Route = createFileRoute('/auth/login')({
 })
 
 function RouteComponent() {
-  return <SocialLogin />
+  return <SocialLoginContainer />
 
 }
