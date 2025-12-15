@@ -12,7 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthCallbackRouteImport } from './routes/auth/$callback'
-import { Route as _travelPlanRouteImport } from './routes/__travel/plan'
+import { Route as protectedtravelPlanRouteImport } from './routes/(protected)/(travel)/plan'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,44 +29,49 @@ const AuthCallbackRoute = AuthCallbackRouteImport.update({
   path: '/auth/$callback',
   getParentRoute: () => rootRouteImport,
 } as any)
-const _travelPlanRoute = _travelPlanRouteImport.update({
-  id: '/__travel/plan',
+const protectedtravelPlanRoute = protectedtravelPlanRouteImport.update({
+  id: '/(protected)/(travel)/plan',
   path: '/plan',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/plan': typeof _travelPlanRoute
   '/auth/$callback': typeof AuthCallbackRoute
   '/auth/login': typeof AuthLoginRoute
+  '/plan': typeof protectedtravelPlanRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/plan': typeof _travelPlanRoute
   '/auth/$callback': typeof AuthCallbackRoute
   '/auth/login': typeof AuthLoginRoute
+  '/plan': typeof protectedtravelPlanRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/__travel/plan': typeof _travelPlanRoute
   '/auth/$callback': typeof AuthCallbackRoute
   '/auth/login': typeof AuthLoginRoute
+  '/(protected)/(travel)/plan': typeof protectedtravelPlanRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/plan' | '/auth/$callback' | '/auth/login'
+  fullPaths: '/' | '/auth/$callback' | '/auth/login' | '/plan'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/plan' | '/auth/$callback' | '/auth/login'
-  id: '__root__' | '/' | '/__travel/plan' | '/auth/$callback' | '/auth/login'
+  to: '/' | '/auth/$callback' | '/auth/login' | '/plan'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth/$callback'
+    | '/auth/login'
+    | '/(protected)/(travel)/plan'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  _travelPlanRoute: typeof _travelPlanRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
   AuthLoginRoute: typeof AuthLoginRoute
+  protectedtravelPlanRoute: typeof protectedtravelPlanRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,11 +97,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/__travel/plan': {
-      id: '/__travel/plan'
+    '/(protected)/(travel)/plan': {
+      id: '/(protected)/(travel)/plan'
       path: '/plan'
       fullPath: '/plan'
-      preLoaderRoute: typeof _travelPlanRouteImport
+      preLoaderRoute: typeof protectedtravelPlanRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -104,9 +109,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  _travelPlanRoute: _travelPlanRoute,
   AuthCallbackRoute: AuthCallbackRoute,
   AuthLoginRoute: AuthLoginRoute,
+  protectedtravelPlanRoute: protectedtravelPlanRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
