@@ -10,7 +10,7 @@ import type {
   SocialLoginReqType,
   SocialLoginResType,
 } from "@/types/login.type";
-import { setAuthStorage } from "@/utils/getLocalstorage";
+import { setAuthStorage } from "@/utils/localstorage";
 import axios from "axios";
 
 const endpoint = "/user/social/login";

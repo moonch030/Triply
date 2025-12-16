@@ -1,5 +1,4 @@
-// TravelList.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type TravelListProps = {
   placeId: string;

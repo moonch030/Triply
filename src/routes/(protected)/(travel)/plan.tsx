@@ -1,5 +1,5 @@
 import TravelMap from "@/components/layout/travel/TravelMap";
-import { isLoggedIn } from "@/utils/getLocalstorage";
+import { getLocalStorage, isLoggedIn } from "@/utils/localstorage";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/(protected)/(travel)/plan")({
@@ -9,6 +9,8 @@ export const Route = createFileRoute("/(protected)/(travel)/plan")({
         to: "/auth/login",
         search: { redirect: location.href },
       });
+    }else{
+      console.log(getLocalStorage("userName"));
     }
   },
   component: RouteComponent,
