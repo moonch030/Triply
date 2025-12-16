@@ -19,8 +19,13 @@ export async function socialLoginApi(params: SocialLoginReqType) {
     .post<SocialLoginResType>(`${endpoint}`, params, {
       withCredentials: true,
     })
-    .then((reponse) => {
-      return succesResponse(reponse);
+    .then((response) => {
+      const { userId, userName } = response.data;
+
+      localStorage.setItem('userId', userId.toString());
+      localStorage.setItem("userName", userName);
+
+      return succesResponse(response);
     })
     .catch(errorResponse());
 }

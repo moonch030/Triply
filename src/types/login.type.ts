@@ -5,10 +5,10 @@ export type SocialLoginReqType = {
 };
 
 export type SocialLoginResType = {
-  accessToken: {
-    value: string;
-    expiredAt: string;
-  };
+  accessToken: string;
+  expiredAt: string;
+  userId: number;
+  userName: string;
 };
 
 export type getKakaoTokenReqType = {
