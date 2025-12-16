@@ -10,6 +10,7 @@ import type {
   SocialLoginReqType,
   SocialLoginResType,
 } from "@/types/login.type";
+import { setAuthStorage } from "@/utils/getLocalstorage";
 import axios from "axios";
 
 const endpoint = "/user/social/login";
@@ -21,9 +22,7 @@ export async function socialLoginApi(params: SocialLoginReqType) {
     })
     .then((response) => {
       const { userId, userName } = response.data;
-
-      localStorage.setItem('userId', userId.toString());
-      localStorage.setItem("userName", userName);
+      setAuthStorage(userId, userName);
 
       return succesResponse(response);
     })
