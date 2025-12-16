@@ -26,7 +26,9 @@ const TravelDetail = ({ placeId }: Props) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK && place) {
           setDetails({
             name: place.name ?? "",
-            openNow: place.opening_hours?.open_now ?? null,
+            openNow: place.opening_hours
+              ? place.opening_hours.isOpen() ?? null
+              : null,
             rating: place.rating ?? null,
             photos: place.photos?.map((p) => p.getUrl()) ?? [],
             openingHours: place.opening_hours?.weekday_text ?? null,

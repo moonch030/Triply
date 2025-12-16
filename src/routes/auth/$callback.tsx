@@ -8,7 +8,7 @@ import {
   getKakaoToken,
   getNaverToken,
   getGoogleToken,
-} from "@/data/socialLogin";
+} from "@/utils/socialLogin";
 
 export const Route = createFileRoute("/auth/$callback")({
   component: RouteComponent,

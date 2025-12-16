@@ -1,4 +1,4 @@
-import TravelMap from "@/components/layout/travel/TravelMap";
+import TravelContainer from "@/components/layout/travel/TravelContainer";
 import { getLocalStorage, isLoggedIn } from "@/utils/localstorage";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
@@ -17,5 +17,5 @@ export const Route = createFileRoute("/(protected)/(travel)/plan")({
 });
 
 function RouteComponent() {
-  return <TravelMap />;
+  return <TravelContainer />;
 }

@@ -1,4 +1,4 @@
-import { redirectToKakaoLogin, redirectToNaverLogin, redirectToGoogleLogin } from "@/data/socialLogin";
+import { redirectToKakaoLogin, redirectToNaverLogin, redirectToGoogleLogin } from "@/utils/socialLogin";
 import { SocialLoginButton } from "./SocialLoginButton";
 
 const SocialLoginBtnGrp = () => {
